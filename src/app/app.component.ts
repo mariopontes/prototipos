@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-root',
@@ -10,339 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
 
-  public icones = [
-    {
-      "tagClass": "fas fa-allergies"
-    },
-    {
-      "tagClass": "fas fa-ambulance",
-    },
-    {
-      "tagClass": "fas fa-band-aid",
-    },
-    {
-      "tagClass": "fas fa-biohazard",
-    },
-    {
-      "tagClass": "fas fa-bone",
-    },
-    {
-      "tagClass": "fas fa-bong",
-    },
-    {
-      "tagClass": "fas fa-book-medical",
-    },
-    {
-      "tagClass": "fas fa-brain",
-    },
-    {
-      "tagClass": "fas fa-briefcase-medical",
-    },
-    {
-      "tagClass": "fas fa-burn",
-    },
-    {
-      "tagClass": "fas fa-cannabis",
-    },
-    {
-      "tagClass": "fas fa-capsules",
-    },
-    {
-      "tagClass": "fas fa-clinic-medical",
-    },
-    {
-      "tagClass": "fas fa-comment-medical",
-    },
-    {
-      "tagClass": "fas fa-crutch",
-    },
-    {
-      "tagClass": "fas fa-diagnoses",
-    },
-    {
-      "tagClass": "fas fa-dna",
-    },
-    {
-      "tagClass": "fas fa-file-medical",
-    },
-    {
-      "tagClass": "fas fa-file-medical-alt",
-    },
-    {
-      "tagClass": "fas fa-file-prescription",
-    },
-    {
-      "tagClass": "fas fa-first-aid",
-    },
-    {
-      "tagClass": "fas fa-heart",
-    },
-    {
-      "tagClass": "far fa-heart",
-    },
-    {
-      "tagClass": "fas fa-heartbeat",
-    },
-    {
-      "tagClass": "fas fa-hospital",
-    },
-    {
-      "tagClass": "far fa-hospital",
-    },
-    {
-      "tagClass": "fas fa-hospital-alt",
-    },
-    {
-      "tagClass": "fas fa-hospital-symbol",
-    },
-    {
-      "tagClass": "fas fa-id-card-alt",
-    },
-    {
-      "tagClass": "fas fa-joint",
-    },
-    {
-      "tagClass": "fas fa-laptop-medical",
-    }, {
-      "tagClass": "fas fa-allergies"
-    },
-    {
-      "tagClass": "fas fa-ambulance",
-    },
-    {
-      "tagClass": "fas fa-band-aid",
-    },
-    {
-      "tagClass": "fas fa-biohazard",
-    },
-    {
-      "tagClass": "fas fa-bone",
-    },
-    {
-      "tagClass": "fas fa-bong",
-    },
-    {
-      "tagClass": "fas fa-book-medical",
-    },
-    {
-      "tagClass": "fas fa-brain",
-    },
-    {
-      "tagClass": "fas fa-briefcase-medical",
-    },
-    {
-      "tagClass": "fas fa-burn",
-    },
-    {
-      "tagClass": "fas fa-cannabis",
-    },
-    {
-      "tagClass": "fas fa-capsules",
-    },
-    {
-      "tagClass": "fas fa-clinic-medical",
-    },
-    {
-      "tagClass": "fas fa-comment-medical",
-    },
-    {
-      "tagClass": "fas fa-crutch",
-    },
-    {
-      "tagClass": "fas fa-diagnoses",
-    },
-    {
-      "tagClass": "fas fa-dna",
-    },
-    {
-      "tagClass": "fas fa-file-medical",
-    },
-    {
-      "tagClass": "fas fa-file-medical-alt",
-    },
-    {
-      "tagClass": "fas fa-file-prescription",
-    },
-    {
-      "tagClass": "fas fa-first-aid",
-    },
-    {
-      "tagClass": "fas fa-heart",
-    },
-    {
-      "tagClass": "far fa-heart",
-    },
-    {
-      "tagClass": "fas fa-heartbeat",
-    },
-    {
-      "tagClass": "fas fa-hospital",
-    },
-    {
-      "tagClass": "far fa-hospital",
-    },
-    {
-      "tagClass": "fas fa-hospital-alt",
-    },
-    {
-      "tagClass": "fas fa-hospital-symbol",
-    },
-    {
-      "tagClass": "fas fa-id-card-alt",
-    },
-    {
-      "tagClass": "fas fa-joint",
-    },
-    {
-      "tagClass": "fas fa-laptop-medical",
-    }, {
-      "tagClass": "fas fa-allergies"
-    },
-    {
-      "tagClass": "fas fa-ambulance",
-    },
-    {
-      "tagClass": "fas fa-band-aid",
-    },
-    {
-      "tagClass": "fas fa-biohazard",
-    },
-    {
-      "tagClass": "fas fa-bone",
-    },
-    {
-      "tagClass": "fas fa-bong",
-    },
-    {
-      "tagClass": "fas fa-book-medical",
-    },
-    {
-      "tagClass": "fas fa-brain",
-    },
-    {
-      "tagClass": "fas fa-briefcase-medical",
-    },
-    {
-      "tagClass": "fas fa-burn",
-    },
-    {
-      "tagClass": "fas fa-cannabis",
-    },
-    {
-      "tagClass": "fas fa-capsules",
-    },
-    {
-      "tagClass": "fas fa-clinic-medical",
-    },
-    {
-      "tagClass": "fas fa-comment-medical",
-    },
-    {
-      "tagClass": "fas fa-crutch",
-    },
-    {
-      "tagClass": "fas fa-diagnoses",
-    },
-    {
-      "tagClass": "fas fa-dna",
-    },
-    {
-      "tagClass": "fas fa-file-medical",
-    },
-    {
-      "tagClass": "fas fa-file-medical-alt",
-    },
-    {
-      "tagClass": "fas fa-file-prescription",
-    },
-    {
-      "tagClass": "fas fa-first-aid",
-    },
-    {
-      "tagClass": "fas fa-heart",
-    },
-    {
-      "tagClass": "far fa-heart",
-    },
-    {
-      "tagClass": "fas fa-heartbeat",
-    },
-    {
-      "tagClass": "fas fa-hospital",
-    },
-    {
-      "tagClass": "far fa-hospital",
-    },
-    {
-      "tagClass": "fas fa-hospital-alt",
-    },
-    {
-      "tagClass": "fas fa-hospital-symbol",
-    },
-    {
-      "tagClass": "fas fa-id-card-alt",
-    },
-    {
-      "tagClass": "fas fa-joint",
-    },
-    {
-      "tagClass": "fas fa-laptop-medical",
-    }, {
-      "tagClass": "fas fa-allergies"
-    },
-    {
-      "tagClass": "fas fa-ambulance",
-    },
-    {
-      "tagClass": "fas fa-band-aid",
-    },
-    {
-      "tagClass": "fas fa-biohazard",
-    },
-    {
-      "tagClass": "fas fa-bone",
-    },
-    {
-      "tagClass": "fas fa-bong",
-    },
-    {
-      "tagClass": "fas fa-book-medical",
-    },
-    {
-      "tagClass": "fas fa-brain",
-    },
-    {
-      "tagClass": "fas fa-briefcase-medical",
-    },
-    {
-      "tagClass": "fas fa-burn",
-    },
-    {
-      "tagClass": "fas fa-cannabis",
-    },
-    {
-      "tagClass": "fas fa-capsules",
-    },
-    {
-      "tagClass": "fas fa-clinic-medical",
-    },
-    {
-      "tagClass": "fas fa-comment-medical",
-    },
-    {
-      "tagClass": "fas fa-crutch",
-    },
-    {
-      "tagClass": "fas fa-diagnoses",
-    },
-    {
-      "tagClass": "fas fa-dna",
-    },
-    {
-      "tagClass": "fas fa-file-medical",
-    }
-
-  ]
+  public icones = [];
 
   modalRef: BsModalRef;
   form: FormGroup
@@ -361,7 +30,9 @@ export class AppComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getIcones();
+  }
 
   testePost() {
     const body = {
@@ -386,25 +57,39 @@ export class AppComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  checkIcon(value: string) {
-    this.iconeClass = value;
+  getIcones() {
+    this.http.get('http://localhost:9000/icones').subscribe((data: any) => this.icones = data)
   }
 
-  addIcon(value) {
-    const obj = {
-      "tagClass": value
+  checkIcon() {
+    this.iconeClass = this.form.get('iconeModal').value;
+  }
+
+  addIcon() {
+    const tagIcon = this.form.get('iconeModal').value.trim();
+    let letGo = true;
+
+
+    this.icones.forEach(e => e.tagClass === tagIcon ? letGo = false : null)
+
+    if (letGo) {
+      const obj = { "tagClass": this.form.get('iconeModal').value.trim() };
+      this.http.post('http://localhost:9000/icones', obj).subscribe(data => this.getIcones());
+      this.modalRef.hide();
+    } else {
+      alert('Icone ja existente!')
     }
-    this.icones.unshift(obj)
-    this.modalRef.hide();
+
   }
 
-  openModalDelete(template, icone) {
+  openModalDelete(template: Template, icone) {
     this.iconeAux = icone;
     this.modalRef = this.modalService.show(template);
   }
 
   deleteIcon() {
-    this.icones.forEach((e, i) => e.tagClass == this.iconeAux ? this.icones.splice(i, 1) : null)
+    this.http.delete(`http://localhost:9000/icones/${this.iconeAux.id}`).subscribe(data => this.getIcones());
     this.modalRef.hide();
   }
+
 }

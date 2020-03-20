@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, TooltipModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
 
@@ -18,6 +18,7 @@ import { FilterPipe } from './shared/filter.pipe';
     AppRoutingModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    TooltipModule.forRoot(),
     ReactiveFormsModule,
     FormsModule
   ],
