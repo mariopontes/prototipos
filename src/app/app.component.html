@@ -1,21 +1,93 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <router-outlet></router-outlet>
 
-<router-outlet></router-outlet>
+<button class="btn btn-primary" (click)="testePost()">Send </button> -->
+
+<div class="row">
+    <div class="container"
+        style="border: 1px solid #ccc; margin-top: 10px; border-radius: 7px; display: flex; flex-flow: wrap;">
+
+
+        <div class="col-md-12">
+            <h2 style="text-align: center;">Icones</h2>
+        </div>
+
+        <div class="col-md-12" style="display: flex;justify-content: center;align-items: center;">
+            <div class="col-md-8" style="padding-top: 15px; padding-bottom: 15px;">
+                <div class="input-group md-form form-sm form-2 pl-0">
+                    <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"
+                        [(ngModel)]="searchTerm">
+                    <div class="input-group-append">
+                        <span class="input-group-text red lighten-3" id="basic-text1">
+                            <i class="fas fa-search" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>Clique <span style="color: blue; cursor: pointer;" (click)="openModalCard(template);">aqui</span>
+                    para adicionar novos icones</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="container"
+        style="border: 1px solid #ccc; margin-top: 10px; border-radius: 7px; max-height: 500px; overflow: auto; margin-top: 25px;">
+
+        <div class="d-flex" style="padding: 10px; flex-flow: wrap;">
+            <div *ngFor="let i of icones | filter:searchTerm" class="card text-white bg-primary mb-3"
+                style="max-width: 7rem;margin: 3px !important;">
+                <div class="card-body">
+                    <div class="i-closed">
+                        <i class="fas fa-times" (click)="openModalDelete(deletarIcone, i.tagClass)"></i>
+                    </div>
+                    <i [class]="i.tagClass" style="font-size: 40px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Icone class name</label>
+                <div class="d-flex">
+                    <input type="text" class="form-control" formControlName="iconeModal">
+                    <button type="button" class="btn btn-warning"
+                        (click)="checkIcon(form.get('iconeModal').value)">Check</button>
+                </div>
+            </div>
+            <div class="form-group" style="display: flex;align-items: center;">
+                <div style="margin-right: 20px;">Preview</div>
+                <i [class]="iconeClass" style="font-size: 50px;"></i>
+            </div>
+            <div class="modal-footer" style="padding: 0; border: 0; margin-top: 25px;">
+                <button type="button" class="btn btn-primary" (click)="addIcon(form.get('iconeModal').value)">Save
+                    changes</button>
+            </div>
+        </form>
+    </div>
+</ng-template>
+
+
+<ng-template #deletarIcone>
+    <div class="modal-header">
+        <h5 class="modal-title">Deseja deletar esse Icone ?</h5>
+        <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-footer" style="border: 0;">
+        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Não</button>
+        <button type="button" class="btn btn-primary" (click)="deleteIcon()">Sim</button>
+    </div>
+</ng-template>

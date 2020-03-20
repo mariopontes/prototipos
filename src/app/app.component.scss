@@ -1,0 +1,24 @@
+.card-body {
+  padding: 5px;
+  width: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover .i-closed {
+    display: flex;
+  }
+
+  .i-closed {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    color: #f13636;
+    cursor: pointer;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+  }
+}
