@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.page-link {
+  border-radius: 5px !important;
+  margin-left: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+.table td,
+.table th {
+  padding: 0.4rem;
+}
+
+.table.dataTable {
+  color: #5b5b60;
+  font-size: 13px;
+}
+
+.dataTables_length,
+.dataTables_info,
+#DataTables_Table_0_filter {
+  color: #8e8e93;
+}

@@ -7,20 +7,30 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalModule, TooltipModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FilterPipe } from './shared/filter.pipe';
+import { IconesComponent } from './pages/icones/icones.component';
+import { TabelasComponent } from './pages/tabelas/tabelas.component';
+import { DataTablesModule } from 'angular-datatables';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { SelectComponent } from './pages/select/select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterPipe
+    FilterPipe,
+    IconesComponent,
+    TabelasComponent,
+    SelectComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ModalModule.forRoot(),
-    TooltipModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule,
+    DataTablesModule,
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
