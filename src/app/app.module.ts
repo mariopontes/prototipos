@@ -13,6 +13,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SelectComponent } from './pages/select/select.component';
 import { DualListComponent } from './pages/dual-list/dual-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,10 @@ import { DualListComponent } from './pages/dual-list/dual-list.component';
     FormsModule,
     NgSelectModule,
     DataTablesModule,
+    MatCardModule,
     ModalModule.forRoot(),
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
