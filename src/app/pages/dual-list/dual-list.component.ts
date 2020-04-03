@@ -71,6 +71,26 @@ export class DualListComponent implements OnInit {
 
   }
 
+  getDataFilter(value: Contexto[]) {
+    this.contextoFilter = value;
+    this.contextoFilter.map(e => {
+
+      e.cards.map(c => {
+        this.cardFilter.push(c)
+
+        c.politicas.map(p => {
+          let addOn = true;
+
+          this.politicasFilter.forEach(o => o.id == p.id ? addOn = false : null);
+          addOn ? this.politicasFilter.push(p) : null;
+        })
+
+      })
+    })
+
+    this.createForm();
+  }
+
 }
 
 
