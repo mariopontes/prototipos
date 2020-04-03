@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Contexto } from './contexto.model';
 
 @Component({
   selector: 'app-dual-list',
@@ -13,7 +14,7 @@ export class DualListComponent implements OnInit {
 
   agrupamento = []
   agrupamentoAdd = []
-  listInstitutos: any;
+  listInstitutos = []
   contextos = []
   cards = []
   politicas = []
@@ -37,31 +38,6 @@ export class DualListComponent implements OnInit {
     })
   }
 
-  getAgrupamentos() {
-    this.http.get('http://localhost:9000/dual-list')
-      .subscribe((data: any) => {
-        this.agrupamento = data
-        this.contextos = data;
-        this.getDataFilter();
-      })
-  }
-
-  addItem(contexto: any, card?: any, politica?: any) {
-
-    if (contexto && !card && !politica) {
-
-    }
-
-    if (contexto && card && !politica) {
-
-    }
-
-    if (contexto && card && politica) {
-      //
-    }
-
-  }
-
   getDataFilter() {
     this.contextos.map(e => {
 
@@ -71,18 +47,53 @@ export class DualListComponent implements OnInit {
         c.politicas.map(p => {
           let addOn = true;
 
-          this.politicas.forEach(o => o.id == p.id ? addOn = false : null);
+          this.politicas.map(o => o.id == p.id ? addOn = false : null);
           addOn ? this.politicas.push(p) : null;
         })
 
       })
     })
 
-    console.log(this.contextos)
-    console.log(this.cards)
-    console.log(this.politicas)
+    this.contextos.map(e => {
+      delete e.cards
+      e.cards = []
+    })
+
+    this.cards.map(e => {
+      delete e.politicas
+      e.politicas = []
+    });
+  }
+
+  getAgrupamentos() {
+    this.http.get('http://localhost:9000/dual-list')
+      .subscribe((data: any) => {
+        this.agrupamento = data
+      })
+
+    this.http.get('http://localhost:9000/dual-list')
+      .subscribe((data: any) => {
+        this.contextos = data;
+        this.getDataFilter();
+      })
+  }
+
+  addItem(idCont: any, idCard?: any, idPol?: any) {
+
+    if (idCont && !idCard && !idPol) {
+      console.log(idCont)
+    }
+
+    if (idCont && idCard && !idPol) {
+      console.log(idCont, idCard)
+    }
+
+    if (idCont && idCard && idPol) {
+      console.log(idCont, idCard, idPol)
+    }
 
   }
+
 
 }
 

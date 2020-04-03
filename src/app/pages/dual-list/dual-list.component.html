@@ -4,22 +4,21 @@
       <div class="box-option" *ngFor="let contexto of agrupamento; let i = index">
         <mat-card class="mat-contextos">
           <a data-toggle="collapse" href="#contexto-{{ i }}">{{contexto.titulo}} </a>
-          <i class="fas fa-angle-double-right" (click)="addItem(contexto)"></i>
+          <i class="fas fa-angle-double-right" (click)="addItem(contexto.id)"></i>
         </mat-card>
 
         <div class="collapse" id="contexto-{{ i }}">
           <div class="box-option" *ngFor="let card of contexto.cards; let j = index">
             <mat-card class="mat-cards">
               <a data-toggle="collapse" href="#card-{{ j }}">{{card.nome}} </a>
-              <i class="fas fa-angle-double-right" (click)="addItem(contexto, card)"></i>
-
+              <i class="fas fa-angle-double-right" (click)="addItem(contexto.id, card.id)"></i>
             </mat-card>
 
             <div class="collapse" id="card-{{ j }}">
               <div class="box-option" *ngFor="let politica of card.politicas">
                 <mat-card class="mat-politicas">
                   <a data-toggle="collapse">{{politica.nome}} </a>
-                  <i class="fas fa-angle-double-right" (click)="addItem(contexto, card, politica)"></i>
+                  <i class="fas fa-angle-double-right" (click)="addItem(contexto.id, card.id, politica.id)"></i>
                 </mat-card>
 
               </div>
