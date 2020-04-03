@@ -12,6 +12,7 @@ import { TabelasComponent } from './pages/tabelas/tabelas.component';
 import { DataTablesModule } from 'angular-datatables';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SelectComponent } from './pages/select/select.component';
+import { DualListComponent } from './pages/dual-list/dual-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SelectComponent } from './pages/select/select.component';
     FilterPipe,
     IconesComponent,
     TabelasComponent,
-    SelectComponent
+    SelectComponent,
+    DualListComponent
   ],
   imports: [
     BrowserModule,
