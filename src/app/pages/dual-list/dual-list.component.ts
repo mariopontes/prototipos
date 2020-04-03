@@ -42,7 +42,32 @@ export class DualListComponent implements OnInit {
       })
   }
 
-  addItem() {
+  addItem(contexto: any, card?: any, politica?: any) {
+
+    if (contexto && !card && !politica) {
+      contexto.selected = true;
+      this.agrupamentoAdd.push(contexto)
+    }
+
+
+    if (contexto && card && !politica) {
+      contexto.selected = true;
+      card.selected = true;
+
+      this.agrupamentoAdd.push(contexto)
+
+      this.agrupamentoAdd.forEach(e => {
+        e.cards.forEach((x, i) => {
+          if (!x.selected) {
+            e.cards.splice(i, 1)
+          }
+        })
+      })
+
+    }
+
+    if (contexto && card && politica) {
+    }
 
   }
 
